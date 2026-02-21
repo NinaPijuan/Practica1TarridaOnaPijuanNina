@@ -5,7 +5,21 @@ import prog2.vista.ExcepcioReserva;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Camping implements InCamping {
+public class Camping implements InCamping{
+    private String nom;
+    private ArrayList<Allotjament> llistaAllotjaments;
+    private ArrayList<Client> llistaClients;
+    private ArrayList<Reserva> llistaReserves; // Ha de ser ArrayList??
+    // Amb els ArrayList cal utilitzar ITERATORS, mirar document de suport
+
+
+    // Tots els mètodes afegir(Allotjament) creen un objecte del tipus d'allotjament amb els paràmetres i l'afegeix a
+    // la llista.
+
+    public Camping(String nom) {
+        this.nom = nom;
+    }
+
     /**
      * Retorna el nom del càmping.
      *
@@ -206,22 +220,25 @@ public class Camping implements InCamping {
     }
 
     // Retorna l'allotjament corresponent a un identificador
-    // S'ha d'utilitzar a afegirReserva()
+    // S'ha d'utilitzar a afegirReserva() de Camping
     public int buscarAllotjament(int id) {
         return 0;
     }
 
     // Retorna el client corresponent a un DNI
-    // S'ha d'utilitzar a afegirReserva()
+    // S'ha d'utilitzar a afegirReserva() de Camping
     public int buscarClient(int dni) {
         return 0;
     }
 
     // Retorna la temporada corresponent a la data
     // Analitzar la data de la temporada
-    // Utilitzar getDayOfMonth i getMonthValue
-    public static InAllotjament.Temp getTemporada(LocalDate data);
-
+    // Temporada alta: 21 de març a 20 de setembre
+    // Temporada baixa: 21 de setembre a 20 de març
+    // Utilitzar getDayOfMonth i getMonthValue de la classe LocalDate
+    public static InAllotjament.Temp getTemporada(LocalDate data) {
+        return null;
+    }
 
 
 }

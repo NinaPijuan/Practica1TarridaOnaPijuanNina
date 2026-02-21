@@ -1,10 +1,17 @@
 package prog2.model;
 
+// TOTES LES CLASSES HAN DE TENIR CONSTRUCTOR, I GETTERS I SETTERS PER ACCEDIR I MODIFICAR ELS ATRIBUTS
+// NÚMERO DE DIES D'ESTADA MÍNIMA HAN DE SER LONG
+// CADA SUBCLASSE (PARCELA, BUNGALOW, BUNGALOW_PREMIUM, GLAMPING I MOBIL-HOME) HAN D'IMPLEMENTAR EL MÈTODE
+// correcteFuncionament
+// ELS CONSTRUCTORS HAN DE REBRE ELS PARÀMETRES EN EL MATEIX ORDRE QUE A InCamping
+// PENSAR MÈTODE toString (??)
+
 public abstract class Allotjament implements InAllotjament {
     private String nom;
     private int id;
-    private int tempsMin;
-    private int temporada;
+    private int tempsMin; // en dies
+    private int temporada; // alta o baixa
 
     /**
      * Obté el nom de l'allotjament.
