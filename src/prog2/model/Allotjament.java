@@ -1,7 +1,6 @@
 package prog2.model;
 
 // TOTES LES CLASSES HAN DE TENIR CONSTRUCTOR, I GETTERS I SETTERS PER ACCEDIR I MODIFICAR ELS ATRIBUTS
-// NÚMERO DE DIES D'ESTADA MÍNIMA HAN DE SER LONG
 // CADA SUBCLASSE (PARCELA, BUNGALOW, BUNGALOW_PREMIUM, GLAMPING I MOBIL-HOME) HAN D'IMPLEMENTAR EL MÈTODE
 // correcteFuncionament
 // ELS CONSTRUCTORS HAN DE REBRE ELS PARÀMETRES EN EL MATEIX ORDRE QUE A InCamping
@@ -10,59 +9,64 @@ package prog2.model;
 public abstract class Allotjament implements InAllotjament {
     private String nom;
     private int id;
-    private int tempsMin; // en dies
-    private int temporada; // alta o baixa
+    private long tempsMinBaixa;
+    private long tempsMinAlta;
+
+
+    /**
+     * Constructor amb paràmetres
+     */
+    public Allotjament(String nom, int id) {
+        this.nom = nom;
+        this.id = id;
+    }
+
 
     /**
      * Obté el nom de l'allotjament.
      *
      * @return el nom de l'allotjament.
      */
-    @Override
-    public String getNom() {
-        return null;
-    }
+    public String getNom() {return nom;}
 
     /**
      * Estableix el nom de l'allotjament.
      *
      * @param nom el nom a assignar.
      */
-    @Override
-    public void setNom(String nom) {
-
-    }
+    public void setNom(String nom) { this.nom = nom; }
 
     /**
      * Obté l'identificador únic de l'allotjament.
      *
      * @return l'identificador únic de l'allotjament.
      */
-    @Override
-    public String getId() {
-        return null;
-    }
+    public String getId() { return id; }
 
     /**
      * Estableix l'identificador únic de l'allotjament.
      *
      * @param id l'identificador a assignar.
      */
-    @Override
-    public void setId(String id) {
+    public void setId(String id) { this.id = id; }
 
+    /**
+     * Obté el temps mínim d'estada segons la temporada
+     * @param temp
+     * @return temps en dies
+     */
+    public long getEstadaMinima(Temp temp){
+        switch (temp){
+            case ALTA: return tempsMinAlta;
+            case BAIXA: return tempsMinBaixa;
+        }
     }
 
     /**
-     * Obté l'estada mínima segons la temporada.
-     *
-     * @param temp la temporada (ALTA o BAIXA).
-     * @return el valor de l'estada mínima per a la temporada indicada.
+     * Enumeració que representa les diferents temporades possibles.
      */
-    @Override
-    public long getEstadaMinima(Temp temp) {
-        return 0;
-    }
+    public enum Temp { BAIXA, ALTA }
+
 
     /**
      * Estableix l'estada mínima per a cada temporada.
@@ -70,9 +74,9 @@ public abstract class Allotjament implements InAllotjament {
      * @param estadaMinimaALTA_  l'estada mínima en temporada alta.
      * @param estadaMinimaBAIXA_ l'estada mínima en temporada baixa.
      */
-    @Override
     public void setEstadaMinima(long estadaMinimaALTA_, long estadaMinimaBAIXA_) {
-
+            tempsMinBaixa = estadaMinimaBAIXA_;
+            tempsMinAlta = estadaMinimaALTA_;
     }
 
     /**
@@ -81,8 +85,6 @@ public abstract class Allotjament implements InAllotjament {
      *
      * @return true si l'allotjament funciona correctament, false altrament.
      */
-    @Override
-    public boolean correcteFuncionament() {
-        return false;
-    }
+    public abstract boolean correcteFuncionament();
+
 }
