@@ -24,20 +24,24 @@ public class Casa extends Allotjament {
      * Obté la mida de la casa
      * @return 1: petita, 2: mitjana, 3: gran
      */
-    @Override
     public int getMida(){ return mida; }
+
+    /**
+     * Guarda la mida
+     * @param mida
+     */
+    public void setMida(int mida){ this.mida = mida; }
+    }
 
     /**
      * Obté el número d'habitacions
      * @return número d'habitacions
      */
-    @Override
     public int getNumHab() { return numHab; }
 
     /**
      * Obté la quantitat de persones que hi caben
      * @return capacitat
      */
-    @Override
     public int getCapacitat() { return capacitat; }
 }

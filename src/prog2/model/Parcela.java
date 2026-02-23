@@ -18,13 +18,28 @@ public class Parcela extends Allotjament {
         this.elec = elec;
     }
 
-
+    /**
+     * Obté la mida
+     * @return mida
+     */
     public int getMida(){ return mida; }
 
+    /**
+     * Guarda la mida
+     * @param mida
+     */
     public void setMida(int mida){ this.mida = mida; }
 
+    /**
+     * Obté l'electricitat
+     * @return elec
+     */
     public int getElec(){ return elec; }
 
+    /**
+     * Guarda l'electricitat
+     * @param elec
+     */
     public void setElec(boolean elec){ this.elec = elec; }
 
 
