@@ -12,12 +12,25 @@ public class MobilHome extends Casa {
      * @param capacitat
      * @param barba
      */
-    public MobileHome(String nom, int id, int mida, int numHab, int capacitat, boolean barba) {
+    public MobilHome(String nom, int id, int mida, int numHab, int capacitat, boolean barba) {
         super(nom, id, mida, numHab, capacitat);
         this.barba = barba;
     }
 
+    /**
+     * Getter i setter de terrassa amb barbacoa
+     */
+    public boolean getBarba(){ return barba; }
+    public void setBarba(boolean barba){ this.barba = barba; }
 
+    /**
+     * Obté tota la informació sobre la classe
+     * @return un string
+     */
+    @Override
+    public String toString(){
+        return super.toString() + ". Mobil-Home{terrasa amb barbacoa= " + barba;
+    }
 
     /**
      * Una Mobil-Home funciona bé si té terrassa amb barbacoa

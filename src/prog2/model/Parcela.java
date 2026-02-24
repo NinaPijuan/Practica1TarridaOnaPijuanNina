@@ -53,6 +53,16 @@ public class Parcela extends Allotjament {
         return elec;
     }
 
+    /**
+     * Obté tota la informació de la classe
+     * @return un string
+     */
+    @Override
+    public String toString(){
+        return super.toString() + ". Parcel·la{mida= " + mida
+                + ", connexió elèctrica= " + elec;
+    }
+
 }
 
 

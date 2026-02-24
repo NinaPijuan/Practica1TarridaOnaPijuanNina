@@ -1,6 +1,7 @@
 package prog2.model;
 
-public class Casa extends Allotjament {
+abstract class Casa extends Allotjament {
+
     private int mida; // petita, mitjana i gran
     private int numHab;
     private int capacitat;
@@ -31,7 +32,6 @@ public class Casa extends Allotjament {
      * @param mida
      */
     public void setMida(int mida){ this.mida = mida; }
-    }
 
     /**
      * Obté el número d'habitacions
@@ -40,8 +40,45 @@ public class Casa extends Allotjament {
     public int getNumHab() { return numHab; }
 
     /**
+    * Guarda el número d'habitacions
+    * @param num
+    */
+    public void setNumHab(int num) { this.numHab = numHab; }
+
+    /**
      * Obté la quantitat de persones que hi caben
      * @return capacitat
      */
     public int getCapacitat() { return capacitat; }
+
+    /**
+    *
+    * @param capacitat
+    */
+    public void setCapacitat(int capacitat) { this.capacitat = capacitat; }
+
+    @Override
+    public long getEstadaMinima(InAllotjament.Temp temp) {
+        return 0;
+    }
+
+
+    public abstract boolean correcteFuncionament();
+
+
+    /**
+     * Retorna tota la informació de la classe
+     * @return un string
+     */
+    @Override
+    public String toString(){
+        return super.toString() + ". Casa{mida= " +
+                mida + ", número habitacions= " +
+                numHab + ", capacitat= " + capacitat;
+    }
+
+
+
+
+
 }
