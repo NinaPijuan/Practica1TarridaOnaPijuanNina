@@ -2,46 +2,45 @@ package prog2.model;
 
 public class Parcela extends Allotjament {
 
-    private int mida; // en m2
-    private boolean elec; //true -> en té
+    private float mida; // en m2
+    private boolean connexioElectrica; //true -> en té
 
     /**
      * Constructor amb paràmetres
      * @param nom
      * @param id
      * @param mida
-     * @param elec
+     * @param connexioElectrica
      */
-    public Parcela(String nom, int id, int mida, boolean elec){
-        super(nom, id);
+    public Parcela(String nom, String id, float mida, boolean connexioElectrica){
+        super(nom, id, 4, 2);
         this.mida = mida;
-        this.elec = elec;
+        this.connexioElectrica = connexioElectrica;
     }
 
     /**
      * Obté la mida
      * @return mida
      */
-    public int getMida(){ return mida; }
+    public float getMida(){ return mida; }
 
     /**
      * Guarda la mida
      * @param mida
      */
-    public void setMida(int mida){ this.mida = mida; }
+    public void setMida(float mida){ this.mida = mida; }
 
     /**
      * Obté l'electricitat
-     * @return elec
+     * @return connexioElectrica
      */
-    public int getElec(){ return elec; }
+    public boolean getConnexio(){ return connexioElectrica; }
 
     /**
      * Guarda l'electricitat
-     * @param elec
+     * @param connexioElectrica
      */
-    public void setElec(boolean elec){ this.elec = elec; }
-
+    public void setConnexio(boolean connexioElectrica){ this.connexioElectrica = connexioElectrica; }
 
 
     /**
@@ -50,9 +49,22 @@ public class Parcela extends Allotjament {
      */
     @Override
     public boolean correcteFuncionament(){
-        return elec;
+        return connexioElectrica;
     }
 
+    /**
+     * Obté tota la informació de la classe
+     * @return un string
+     */
+    @Override
+    public String toString(){
+        return super.toString(); //+ ". Parcel·la{mida= " + mida
+               // + ", connexió elèctrica= " + connexioElectrica + ".";
+    }
+
+    public boolean isConnexioElectrica() {return connexioElectrica;}
+
+    public void setConnexioElectrica(boolean connexioElectrica) {this.connexioElectrica = connexioElectrica;}
 }
 
 

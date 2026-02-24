@@ -16,7 +16,7 @@ public abstract class Allotjament implements InAllotjament {
     /**
      * Constructor amb paràmetres
      */
-    public Allotjament(String nom, String id, long tempsMinBaixa, long tempsMinAlta) {
+    public Allotjament(String nom, String id, long tempsMinAlta, long tempsMinBaixa) {
         this.nom = nom;
         this.id = id;
         this.tempsMinBaixa = tempsMinBaixa;
@@ -57,10 +57,10 @@ public abstract class Allotjament implements InAllotjament {
      * @param temp ALTA o BAIXA
      * @return temps en dies
      */
-    public long getEstadaMinima(Temp temp){
+    public long getEstadaMinima(InAllotjament.Temp temp){
         switch (temp){
-            case ALTA: return tempsMinAlta;
-            case BAIXA: return tempsMinBaixa;
+            case ALTA: return this.tempsMinAlta;
+            case BAIXA: return this.tempsMinBaixa;
             default: return 0; // Per si de cas?
         }
     }
@@ -68,16 +68,16 @@ public abstract class Allotjament implements InAllotjament {
     /**
      * Enumeració que representa les diferents temporades possibles.
      */
-    public enum Temp { BAIXA, ALTA }
+    // public enum Temp { BAIXA, ALTA }
 
 
     /**
      * Estableix l'estada mínima per a cada temporada.
      *
+     * @param tempsMinAlta  l'estada mínima en temporada alta
      * @param tempsMinBaixa l'estada mínima en temporada baixa.
-     * @param tempsMinAlta  l'estada mínima en temporada alta.
      */
-    public void setEstadaMinima(long tempsMinBaixa, long tempsMinAlta) {
+    public void setEstadaMinima(long tempsMinAlta, long tempsMinBaixa) {
             this.tempsMinBaixa = tempsMinBaixa;
             this.tempsMinAlta = tempsMinAlta;
     }
@@ -90,4 +90,14 @@ public abstract class Allotjament implements InAllotjament {
      */
     public abstract boolean correcteFuncionament();
 
+    /**
+     * Obté tota la informació de la classe
+     * @return un string
+     */
+    @Override
+    public String toString(){
+        return "Nom=" + nom + ", Id=" + id + ", estada mínima en temp ALTA: " + tempsMinAlta + ", estada mínima en temp BAIXA: " + tempsMinBaixa + ".";
+    }
+
 }
+

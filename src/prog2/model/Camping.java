@@ -75,7 +75,7 @@ public class Camping implements InCamping{
      */
     @Override
     public int getNumReserves() {
-        return llistaReserves.size();
+        return 0;
     }
 
     /**
@@ -84,7 +84,9 @@ public class Camping implements InCamping{
      * @return el número total de clients.
      */
     @Override
-    public int getNumClients() { return llistaReserves.size();}
+    public int getNumClients() {
+        return llistaClients.size();
+    }
 
     /**
      * Crea un nou objecte de tipus Client i l'afegeix a la llista de clients.
@@ -95,6 +97,7 @@ public class Camping implements InCamping{
     @Override
     public void afegirClient(String nom_, String dni_) {
         Client c = new Client(nom_, dni_);
+        llistaClients.add(c);
     }
 
     /**
@@ -108,7 +111,7 @@ public class Camping implements InCamping{
     @Override
     public void afegirParcela(String nom_, String idAllotjament_, float metres, boolean connexioElectrica) {
         Parcela p = new Parcela(nom_, idAllotjament_, metres, connexioElectrica);
-
+        llistaAllotjaments.add(p);
     }
 
     /**
@@ -126,7 +129,8 @@ public class Camping implements InCamping{
      */
     @Override
     public void afegirBungalow(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred) {
-
+        Bungalow b = new Bungalow(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred);
+        llistaAllotjaments.add(b);
     }
 
     /**
@@ -147,7 +151,8 @@ public class Camping implements InCamping{
      */
     @Override
     public void afegirBungalowPremium(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi) {
-
+        BungalowPremium bp = new BungalowPremium(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi);
+        llistaAllotjaments.add(bp);
     }
 
     /**

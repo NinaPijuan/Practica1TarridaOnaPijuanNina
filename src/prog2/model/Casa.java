@@ -1,7 +1,8 @@
 package prog2.model;
 
-public class Casa extends Allotjament {
-    private int mida; // petita, mitjana i gran
+abstract class Casa extends Allotjament {
+
+    private String mida; // petita, mitjana i gran
     private int numHab;
     private int capacitat;
 
@@ -13,8 +14,8 @@ public class Casa extends Allotjament {
      * @param numHab
      * @param capacitat
      */
-    public Casa(String nom, int id, int mida, int numHab, int capacitat){
-        super(nom, id);
+    public Casa(String nom, String id, String mida, int numHab, int capacitat){
+        super(nom, id, 4, 7);
         this.mida = mida;
         this.numHab = numHab;
         this.capacitat = capacitat;
@@ -24,14 +25,13 @@ public class Casa extends Allotjament {
      * Obté la mida de la casa
      * @return 1: petita, 2: mitjana, 3: gran
      */
-    public int getMida(){ return mida; }
+    public String getMida(){ return mida; }
 
     /**
      * Guarda la mida
      * @param mida
      */
-    public void setMida(int mida){ this.mida = mida; }
-    }
+    public void setMida(String mida){ this.mida = mida; }
 
     /**
      * Obté el número d'habitacions
@@ -40,8 +40,45 @@ public class Casa extends Allotjament {
     public int getNumHab() { return numHab; }
 
     /**
+    * Guarda el número d'habitacions
+    * @param numHab
+    */
+    public void setNumHab(int numHab) { this.numHab = numHab; }
+
+    /**
      * Obté la quantitat de persones que hi caben
      * @return capacitat
      */
     public int getCapacitat() { return capacitat; }
+
+    /**
+    *
+    * @param capacitat
+    */
+    public void setCapacitat(int capacitat) { this.capacitat = capacitat; }
+
+    @Override
+    public long getEstadaMinima(InAllotjament.Temp temp) {
+        return 0;
+    }
+
+
+    public abstract boolean correcteFuncionament();
+
+
+    /**
+     * Retorna tota la informació de la classe
+     * @return un string
+     */
+    @Override
+    public String toString(){
+        return super.toString() + ". Casa{mida= " +
+                mida + ", número habitacions= " +
+                numHab + ", capacitat= " + capacitat;
+    }
+
+
+
+
+
 }

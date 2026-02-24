@@ -1,7 +1,7 @@
 package prog2.model;
 
 public class MobilHome extends Casa {
-    private boolean barba;
+    private boolean terrassa;
 
     /**
      * Constructor amb paràmetres
@@ -10,14 +10,27 @@ public class MobilHome extends Casa {
      * @param mida
      * @param numHab
      * @param capacitat
-     * @param barba
+     * @param terrassa
      */
-    public MobileHome(String nom, int id, int mida, int numHab, int capacitat, boolean barba) {
+    public MobilHome(String nom, String id, String mida, int numHab, int capacitat, boolean terrassa) {
         super(nom, id, mida, numHab, capacitat);
-        this.barba = barba;
+        this.terrassa = terrassa;
     }
 
+    /**
+     * Getter i setter de terrassa amb barbacoa
+     */
+    public boolean getTerrassa(){ return terrassa; }
+    public void setTerrassa(boolean terrassa){ this.terrassa = terrassa; }
 
+    /**
+     * Obté tota la informació sobre la classe
+     * @return un string
+     */
+    @Override
+    public String toString(){
+        return super.toString() + ". Mobil-Home{Terrassa amb barbacoa= " + terrassa;
+    }
 
     /**
      * Una Mobil-Home funciona bé si té terrassa amb barbacoa
@@ -25,7 +38,7 @@ public class MobilHome extends Casa {
      */
     @Override
     public boolean correcteFuncionament(){
-        return barba;
+        return terrassa;
     }
 
 

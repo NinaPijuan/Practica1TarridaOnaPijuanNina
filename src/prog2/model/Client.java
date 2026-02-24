@@ -47,4 +47,15 @@ public class Client implements InClient {
     public void setDni(String dni) {
         this.dni = dni;
     }
+
+    /**
+     * Obté tota la informació de la classe
+     * @return un string
+     */
+    @Override
+    public String toString(){
+        return nom + " amb DNI: " + dni + ". ";
+    }
 }
+
+
