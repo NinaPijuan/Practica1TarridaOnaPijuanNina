@@ -9,7 +9,7 @@ public class Camping implements InCamping{
     private String nom;
     private ArrayList<Allotjament> llistaAllotjaments;
     private ArrayList<Client> llistaClients;
-    private ArrayList<Reserva> llistaReserves; // Ha de ser ArrayList??
+    private LlistaReserves llistaReserves;
     // Amb els ArrayList cal utilitzar ITERATORS, mirar document de suport
 
 
@@ -27,7 +27,7 @@ public class Camping implements InCamping{
      */
     @Override
     public String getNom() {
-        return null;
+        return nom;
     }
 
     /**
@@ -37,7 +37,7 @@ public class Camping implements InCamping{
      */
     @Override
     public LlistaReserves getLlistaReserves() {
-        return null;
+        return llistaReserves;
     }
 
     /**
@@ -45,7 +45,7 @@ public class Camping implements InCamping{
      */
     @Override
     public ArrayList<Allotjament> getLlistaAllotjaments() {
-        return null;
+        return llistaAllotjaments;
     }
 
     /**
@@ -55,7 +55,7 @@ public class Camping implements InCamping{
      */
     @Override
     public ArrayList<Client> getLlistaClients() {
-        return null;
+        return llistaClients;
     }
 
     /**
@@ -65,7 +65,7 @@ public class Camping implements InCamping{
      */
     @Override
     public int getNumAllotjaments() {
-        return 0;
+        return llistaAllotjaments.size();
     }
 
     /**
@@ -75,7 +75,7 @@ public class Camping implements InCamping{
      */
     @Override
     public int getNumReserves() {
-        return 0;
+        return llistaReserves.size();
     }
 
     /**
@@ -84,9 +84,7 @@ public class Camping implements InCamping{
      * @return el número total de clients.
      */
     @Override
-    public int getNumClients() {
-        return 0;
-    }
+    public int getNumClients() { return llistaReserves.size();}
 
     /**
      * Crea un nou objecte de tipus Client i l'afegeix a la llista de clients.
@@ -96,7 +94,7 @@ public class Camping implements InCamping{
      */
     @Override
     public void afegirClient(String nom_, String dni_) {
-
+        Client c = new Client(nom_, dni_);
     }
 
     /**
@@ -109,6 +107,7 @@ public class Camping implements InCamping{
      */
     @Override
     public void afegirParcela(String nom_, String idAllotjament_, float metres, boolean connexioElectrica) {
+        Parcela p = new Parcela(nom_, idAllotjament_, metres, connexioElectrica);
 
     }
 

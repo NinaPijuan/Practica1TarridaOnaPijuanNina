@@ -8,7 +8,7 @@ package prog2.model;
 
 public abstract class Allotjament implements InAllotjament {
     private String nom;
-    private int id;
+    private String id;
     private long tempsMinBaixa;
     private long tempsMinAlta;
 
@@ -16,9 +16,11 @@ public abstract class Allotjament implements InAllotjament {
     /**
      * Constructor amb paràmetres
      */
-    public Allotjament(String nom, int id) {
+    public Allotjament(String nom, String id, long tempsMinBaixa, long tempsMinAlta) {
         this.nom = nom;
         this.id = id;
+        this.tempsMinBaixa = tempsMinBaixa;
+        this.tempsMinAlta = tempsMinAlta;
     }
 
 
@@ -52,13 +54,14 @@ public abstract class Allotjament implements InAllotjament {
 
     /**
      * Obté el temps mínim d'estada segons la temporada
-     * @param temp
+     * @param temp ALTA o BAIXA
      * @return temps en dies
      */
     public long getEstadaMinima(Temp temp){
         switch (temp){
             case ALTA: return tempsMinAlta;
             case BAIXA: return tempsMinBaixa;
+            default: return 0; // Per si de cas?
         }
     }
 
@@ -71,12 +74,12 @@ public abstract class Allotjament implements InAllotjament {
     /**
      * Estableix l'estada mínima per a cada temporada.
      *
-     * @param estadaMinimaALTA_  l'estada mínima en temporada alta.
-     * @param estadaMinimaBAIXA_ l'estada mínima en temporada baixa.
+     * @param tempsMinBaixa l'estada mínima en temporada baixa.
+     * @param tempsMinAlta  l'estada mínima en temporada alta.
      */
-    public void setEstadaMinima(long estadaMinimaALTA_, long estadaMinimaBAIXA_) {
-            tempsMinBaixa = estadaMinimaBAIXA_;
-            tempsMinAlta = estadaMinimaALTA_;
+    public void setEstadaMinima(long tempsMinBaixa, long tempsMinAlta) {
+            this.tempsMinBaixa = tempsMinBaixa;
+            this.tempsMinAlta = tempsMinAlta;
     }
 
     /**
