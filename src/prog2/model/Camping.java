@@ -9,7 +9,7 @@ public class Camping implements InCamping{
     private String nom;
     private ArrayList<Allotjament> llistaAllotjaments;
     private ArrayList<Client> llistaClients;
-    private ArrayList<Reserva> llistaReserves; // Ha de ser ArrayList??
+    private LlistaReserves llistaReserves;
     // Amb els ArrayList cal utilitzar ITERATORS, mirar document de suport
 
 
@@ -27,7 +27,7 @@ public class Camping implements InCamping{
      */
     @Override
     public String getNom() {
-        return null;
+        return nom;
     }
 
     /**
@@ -37,7 +37,7 @@ public class Camping implements InCamping{
      */
     @Override
     public LlistaReserves getLlistaReserves() {
-        return null;
+        return llistaReserves;
     }
 
     /**
@@ -45,7 +45,7 @@ public class Camping implements InCamping{
      */
     @Override
     public ArrayList<Allotjament> getLlistaAllotjaments() {
-        return null;
+        return llistaAllotjaments;
     }
 
     /**
@@ -55,7 +55,7 @@ public class Camping implements InCamping{
      */
     @Override
     public ArrayList<Client> getLlistaClients() {
-        return null;
+        return llistaClients;
     }
 
     /**
@@ -65,7 +65,7 @@ public class Camping implements InCamping{
      */
     @Override
     public int getNumAllotjaments() {
-        return 0;
+        return llistaAllotjaments.size();
     }
 
     /**
@@ -85,7 +85,7 @@ public class Camping implements InCamping{
      */
     @Override
     public int getNumClients() {
-        return 0;
+        return llistaClients.size();
     }
 
     /**
@@ -96,7 +96,8 @@ public class Camping implements InCamping{
      */
     @Override
     public void afegirClient(String nom_, String dni_) {
-
+        Client c = new Client(nom_, dni_);
+        llistaClients.add(c);
     }
 
     /**
@@ -109,7 +110,8 @@ public class Camping implements InCamping{
      */
     @Override
     public void afegirParcela(String nom_, String idAllotjament_, float metres, boolean connexioElectrica) {
-
+        Parcela p = new Parcela(nom_, idAllotjament_, metres, connexioElectrica);
+        llistaAllotjaments.add(p);
     }
 
     /**
@@ -127,7 +129,8 @@ public class Camping implements InCamping{
      */
     @Override
     public void afegirBungalow(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred) {
-
+        Bungalow b = new Bungalow(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred);
+        llistaAllotjaments.add(b);
     }
 
     /**
@@ -148,7 +151,8 @@ public class Camping implements InCamping{
      */
     @Override
     public void afegirBungalowPremium(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi) {
-
+        BungalowPremium bp = new BungalowPremium(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi);
+        llistaAllotjaments.add(bp);
     }
 
     /**

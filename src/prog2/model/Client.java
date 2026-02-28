@@ -9,14 +9,13 @@ public class Client implements InClient {
     // Constructor
     public Client(String nom, String dni) {
         this.nom = nom;
-        this.dni = dni;
+        setDni(dni);
     }
 
     /**
      * Getter de nom
      * @return nom
      */
-    @Override
     public String getNom() {
         return nom;
     }
@@ -25,7 +24,6 @@ public class Client implements InClient {
      * Getter de dni
      * @return dni
      */
-    @Override
     public String getDni() {
         return dni;
     }
@@ -34,17 +32,27 @@ public class Client implements InClient {
      * Setter de nom
      * @param nom el nom del client
      */
-    @Override
     public void setNom(String nom) {
-        this.nom = nom;
+
+        if (nom.length() == 9){ this.nom = nom; }
+        else { System.out.println("DNI no vàlid."); }
     }
 
     /**
      * Getter de dni
      * @param dni el dni del client
      */
-    @Override
     public void setDni(String dni) {
         this.dni = dni;
     }
+
+    /**
+     * Obté tota la informació de la classe
+     * @return un string
+     */
+    public String toString(){
+        return nom + " amb DNI: " + dni + ". ";
+    }
 }
+
+

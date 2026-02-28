@@ -3,10 +3,49 @@ package prog2.model;
 import prog2.vista.ExcepcioReserva;
 
 import java.time.LocalDate;
+import java.time.MonthDay;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class LlistaReserves implements InLlistaReserves {
     private ArrayList<Reserva> llistaReserves;
+
+    public LlistaReserves() {
+        this.llistaReserves = new ArrayList<>();
+    }
+
+
+    /**
+     * Comprova que l'estada desitjada sigui igual o més llarga que l'estada mínima segons temporada i allotjament
+     * @param allotjament
+     * @param dataEntrada
+     * @param dataSortida
+     * @return boolean
+     */
+    public boolean isEstadaMinima(Allotjament allotjament, LocalDate dataEntrada, LocalDate dataSortida) {
+
+        long diesEstada = ChronoUnit.DAYS.between(dataEntrada, dataSortida);
+
+        // Per no tenir en compte els anys, es fa amb MonthDay:
+        MonthDay iniciTempAlta = MonthDay.of(3, 21);
+        MonthDay iniciTempBaixa = MonthDay.of(9, 21);
+        // Passem la dataEntrada a MonthDay per poder comprar
+        MonthDay diaEntrada = MonthDay.from(dataEntrada);
+
+        InAllotjament.Temp temp;
+        // Si la data d'entrada >= iniciTempAlta i <= iniciTempBaixa:
+        if (!diaEntrada.isBefore(iniciTempAlta) && !diaEntrada.isAfter(iniciTempBaixa)){
+            temp = InAllotjament.Temp.ALTA;
+        }
+        else { temp = InAllotjament.Temp.BAIXA; }
+
+        long diesMinims = allotjament.getEstadaMinima(temp);
+
+        boolean estadaValida = (diesEstada >= diesMinims);
+        return estadaValida;
+
+    }
+
 
     /**
      * Comprova que l'estada que es demani sigui més llarga o igual que l'estada mínima.
@@ -20,7 +59,6 @@ public class LlistaReserves implements InLlistaReserves {
      * @param dataSortida
      * @throws ExcepcioReserva
      */
-    @Override
     public void afegirReserva(Allotjament allotjament, Client client, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
         // Utilitzar allotjamentDisponible
 
@@ -35,26 +73,62 @@ public class LlistaReserves implements InLlistaReserves {
         // Crear la reserva i afegir-la a llistaReserves;
 
 
+        if (!isEstadaMinima(allotjament, dataEntrada, dataSortida)) {
+            throw new ExcepcioReserva("Les dates sol·licitades pel client " + client + " amb DNI: " +
+                    client.getDni() + " no compleixen l'estada mínima per l'allotjament amb identificador "
+                    + allotjament.getId());
+        }
+
+        if (!allotjamentDisponible(allotjament, dataEntrada, dataSortida)) {
+            throw new ExcepcioReserva("L’allotjament amb identificador " + allotjament.getId() +
+                    " no està disponible en la data demanada " + dataEntrada + " pel client " + client +
+                    " amb DNI: " + client.getDni());
+        }
+
+        Reserva reserva = new Reserva(allotjament, client, dataEntrada, dataSortida);
+        llistaReserves.add(reserva);
+
     }
 
     /**
-     * Retorna el número de reserves de la llista.
-     *
+     * Retorna el número de reserves de la llista
      * @return el número de reserves.
      */
-    @Override
-    public int getNumReserves() {
-        return 0;
-    }
+    public int getNumReserves() { return llistaReserves.size(); }
 
-    // Indica si l'allotjament passat està disponible per fer reserva en el dia indicat
+
+    /**
+    * Comprova si un allotjament està disponible en les dates desitjades
+    * @param allotjament
+    * @param dataEntrada
+    * @param dataSortida
+    * @return boolean
+    */
     public boolean allotjamentDisponible(Allotjament allotjament, LocalDate dataEntrada, LocalDate dataSortida) {
-        return false;
+
+        boolean lliure = true;
+        String id = allotjament.getId();
+
+        for (int i = 0; i < llistaReserves.size(); i++) {
+
+            Reserva reserva = llistaReserves.get(i);
+            Allotjament allotjamentReservat = reserva.getAllotjament_();
+            String idReservat = allotjamentReservat.getId();
+
+            if (id.equals(idReservat)) {
+
+                LocalDate dataEntradaReservada = reserva.getDataEntrada();
+                LocalDate dataSortidaReservada = reserva.getDataSortida();
+
+                if (!dataSortida.isBefore(dataEntradaReservada) && !dataEntrada.isAfter(dataSortidaReservada)) {
+                    lliure = false;
+                }
+            }
+        }
+
+        return lliure;
     }
 
-    // Indica si l'estada sol·licitada compleix que és més llarga o igual que l'estada mínima de l'allotjament en
-    // la temporada corresponent a la data d'entrada
-    public boolean isEstadaMinima(Allotjament allotjament, LocalDate dataEntrada, LocalDate dataSortida) {
-        return false;
-    }
+
+
 }

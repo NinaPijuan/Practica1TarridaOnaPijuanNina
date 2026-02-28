@@ -1,7 +1,7 @@
 package prog2.model;
 
 public class Bungalow extends Casa {
-    private int park; // 1 o 2
+    private int parquing; // 1 o 2
     private boolean terrassa; // true -> en té
     private boolean tele;
     private boolean aire;
@@ -13,14 +13,14 @@ public class Bungalow extends Casa {
      * @param mida
      * @param numHab
      * @param capacitat
-     * @param park
+     * @param parquing
      * @param terrassa
      * @param tele
      * @param aire
      */
-    public Bungalow(String nom, int id, int mida, int numHab, int capacitat, int park, boolean terrassa, boolean tele, boolean aire){
-        super(nom, id, mida, numHab, capacitat);
-        this.park = park;
+    public Bungalow(String nom, String id, String mida, int numHab, int capacitat, int parquing, boolean terrassa, boolean tele, boolean aire){
+        super(nom, id, 7, 4, mida, numHab, capacitat);
+        this.parquing = parquing;
         this.terrassa = terrassa;
         this.tele = tele;
         this.aire = aire;
@@ -29,15 +29,15 @@ public class Bungalow extends Casa {
     /**
      * Getters de places de parking, terrassa, televisió i sistema d'aire fred
      */
-    public int getPark(){ return park; }
+    public int getPark(){ return parquing; }
     public boolean getTerrassa(){ return terrassa; }
     public boolean getTele(){ return tele; }
     public boolean getAire(){ return aire; }
 
     /**
-     * Setters de places de parking, terrassa, televisió i sistema d'aire fred
+     * Setters de places de parqing, terrassa, televisió i sistema d'aire fred
      */
-    public void setPark(int park){ this.park = park; }
+    public void setParquing(int park){ this.parquing = parquing; }
     public void setTerrassa(boolean terrassa){ this.terrassa = terrassa; }
     public void setTele(boolean tele){ this.tele = tele; }
     public void setAire(boolean aire){ this.aire = aire; }
@@ -49,8 +49,8 @@ public class Bungalow extends Casa {
     @Override
     public String toString(){
         return super.toString() + ". Bungalow{places de parking= "
-                + park + ", terrassa= " + terrassa + ",tele= " + tele
-                + ", aire= " + aire;
+                + parquing + ", terrassa= " + terrassa + ",tele= " + tele
+                + ", aire= " + aire + ".";
     }
 
     /**

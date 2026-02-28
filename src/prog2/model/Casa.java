@@ -2,7 +2,7 @@ package prog2.model;
 
 abstract class Casa extends Allotjament {
 
-    private int mida; // petita, mitjana i gran
+    private String mida; // petita, mitjana i gran
     private int numHab;
     private int capacitat;
 
@@ -14,8 +14,8 @@ abstract class Casa extends Allotjament {
      * @param numHab
      * @param capacitat
      */
-    public Casa(String nom, int id, int mida, int numHab, int capacitat){
-        super(nom, id);
+    public Casa(String nom, String id, int tempsMinAlta, int tempsMinBaixa, String mida, int numHab, int capacitat){
+        super(nom, id, tempsMinAlta, tempsMinBaixa);
         this.mida = mida;
         this.numHab = numHab;
         this.capacitat = capacitat;
@@ -25,13 +25,13 @@ abstract class Casa extends Allotjament {
      * Obté la mida de la casa
      * @return 1: petita, 2: mitjana, 3: gran
      */
-    public int getMida(){ return mida; }
+    public String getMida(){ return mida; }
 
     /**
      * Guarda la mida
      * @param mida
      */
-    public void setMida(int mida){ this.mida = mida; }
+    public void setMida(String mida){ this.mida = mida; }
 
     /**
      * Obté el número d'habitacions
@@ -41,9 +41,9 @@ abstract class Casa extends Allotjament {
 
     /**
     * Guarda el número d'habitacions
-    * @param num
+    * @param numHab
     */
-    public void setNumHab(int num) { this.numHab = numHab; }
+    public void setNumHab(int numHab) { this.numHab = numHab; }
 
     /**
      * Obté la quantitat de persones que hi caben
@@ -72,7 +72,7 @@ abstract class Casa extends Allotjament {
      */
     @Override
     public String toString(){
-        return super.toString() + ". Casa{mida= " +
+        return super.toString() + " Casa{mida= " +
                 mida + ", número habitacions= " +
                 numHab + ", capacitat= " + capacitat;
     }

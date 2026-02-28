@@ -1,6 +1,10 @@
 package prog2.model;
 
+import prog2.vista.ExcepcioReserva;
+
 import java.time.LocalDate;
+import java.time.MonthDay;
+import java.time.temporal.ChronoUnit;
 
 public class Reserva implements InReserva {
     private Allotjament allotjament;
@@ -11,8 +15,8 @@ public class Reserva implements InReserva {
     // D'ALLOTJAMENT I SEGONS LA TEMPORADA.
 
     // LA CLASSE LOCAL DATE??
-    // hem de crear una classe que es digui així i posar els seus mètodes allà??
-    // hem de crear un mètode a la classe Reserva on calculem l'estada i utilitzar el LocalDate??
+    // hem de crear una classe que es digui així i posar els seus mètodes allà?? No, és una llibreria k es pot utilitzar
+    // hem de crear un mètode a la classe Reserva on calculem l'estada i utilitzar el LocalDate?? Es fa a LlistaReserves
 
     // Constructor
     public Reserva(Allotjament allotjament, Client client, LocalDate dataEntrada, LocalDate dataSortida) {
@@ -23,66 +27,29 @@ public class Reserva implements InReserva {
     }
 
     /**
-     * @return 
+     * Getters d'allotjament reservat, client que reserva, i dates d'entrada i sortida
      */
-    @Override
-    public Allotjament getAllotjament_() {
-        return null;
-    }
-
-    /**
-     * @return 
-     */
-    @Override
+    public Allotjament getAllotjament_() {return allotjament; }
     public Client getClient() {
-        return null;
+        return client;
     }
-
-    /**
-     * @return 
-     */
-    @Override
     public LocalDate getDataEntrada() {
-        return null;
+        return dataEntrada;
     }
-
-    /**
-     * @return 
-     */
-    @Override
     public LocalDate getDataSortida() {
-        return null;
+        return dataSortida;
     }
 
+
+
+    // akests no tenen gens de sentit (els poso igualment i després ja decidim)
     /**
-     * @param allotjament_ 
+     * Setters d'allotjament reservat, client que reserva, i dates d'entrada i sortida
      */
-    @Override
-    public void setAllotjament_(Allotjament allotjament_) {
+    public void setAllotjament_(Allotjament allotjament) { this.allotjament = allotjament; }
+    public void setClient(Client client) { this.client = client; }
+    public void setDataEntrada(LocalDate dataEntrada) { this.dataEntrada = dataEntrada; }
+    public void setDataSortida(LocalDate dataSortida) { this.dataSortida = dataSortida; }
 
-    }
 
-    /**
-     * @param client_ 
-     */
-    @Override
-    public void setClient(Client client_) {
-
-    }
-
-    /**
-     * @param dataEntrada_ 
-     */
-    @Override
-    public void setDataEntrada(LocalDate dataEntrada_) {
-
-    }
-
-    /**
-     * @param dataSortida_ 
-     */
-    @Override
-    public void setDataSortida(LocalDate dataSortida_) {
-
-    }
 }
