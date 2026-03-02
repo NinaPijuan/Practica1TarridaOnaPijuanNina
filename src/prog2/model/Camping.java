@@ -4,6 +4,7 @@ import prog2.vista.ExcepcioReserva;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Camping implements InCamping{
     private String nom;
@@ -18,6 +19,9 @@ public class Camping implements InCamping{
 
     public Camping(String nom) {
         this.nom = nom;
+        this.llistaAllotjaments = new ArrayList<Allotjament>();
+        this.llistaClients = new ArrayList<Client>();
+        this.llistaReserves = new LlistaReserves();
     }
 
     /**
@@ -75,7 +79,7 @@ public class Camping implements InCamping{
      */
     @Override
     public int getNumReserves() {
-        return 0;
+        return llistaReserves.getNumReserves(); // ACABAR
     }
 
     /**
@@ -169,7 +173,8 @@ public class Camping implements InCamping{
      */
     @Override
     public void afegirGlamping(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, String material, boolean casaMascota) {
-
+        Glamping g = new Glamping(nom, idAllotjament_, mida, habitacions, placesPersones, material, casaMascota);
+        llistaAllotjaments.add(g);
     }
 
     /**
@@ -185,7 +190,8 @@ public class Camping implements InCamping{
      */
     @Override
     public void afegirMobilHome(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, boolean terrassaBarbacoa) {
-
+        MobilHome mh = new MobilHome(nom, idAllotjament_, mida, habitacions, placesPersones, terrassaBarbacoa);
+        llistaAllotjaments.add(mh);
     }
 
     /**
@@ -199,6 +205,7 @@ public class Camping implements InCamping{
      */
     @Override
     public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
+        // CAL UTILITZAR BUSCARALLOTJAMENT() I BUSCAR CLIENT
 
     }
 
@@ -225,14 +232,26 @@ public class Camping implements InCamping{
 
     // Retorna l'allotjament corresponent a un identificador
     // S'ha d'utilitzar a afegirReserva() de Camping
-    public int buscarAllotjament(int id) {
-        return 0;
+    public Allotjament buscarAllotjament(int id) {
+        Iterator<Allotjament> itrAllotjament = llistaAllotjaments.iterator();
+        while (itrAllotjament.hasNext()) {
+            Allotjament a = itrAllotjament.next();
+            if (a.getId().equals(id))
+                return a;
+        }
+        return null; // EXCEPCIO??
     }
 
     // Retorna el client corresponent a un DNI
     // S'ha d'utilitzar a afegirReserva() de Camping
-    public int buscarClient(int dni) {
-        return 0;
+    public Client buscarClient(int dni) {
+        Iterator<Client> itrClients = llistaClients.iterator();
+        while (itrClients.hasNext()) {
+            Client c = itrClients.next();
+            if (c.getDni().equals(dni))
+                return c;
+        }
+        return null; // RETORNA EXCEPCIÓ?
     }
 
     // Retorna la temporada corresponent a la data
@@ -241,6 +260,10 @@ public class Camping implements InCamping{
     // Temporada baixa: 21 de setembre a 20 de març
     // Utilitzar getDayOfMonth i getMonthValue de la classe LocalDate
     public static InAllotjament.Temp getTemporada(LocalDate data) {
+        int dia = data.getDayOfMonth();
+        int mes = data.getMonthValue();
+        // Temporada alta:
+
         return null;
     }
 

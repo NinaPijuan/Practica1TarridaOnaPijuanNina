@@ -62,6 +62,7 @@ public class Parcela extends Allotjament {
                // + ", connexió elèctrica= " + connexioElectrica + ".";
     }
 
+    public boolean isConnexioElectrica() {return connexioElectrica;} // REPETIT?
 }
 
 

@@ -33,9 +33,8 @@ public class Client implements InClient {
      * @param nom el nom del client
      */
     public void setNom(String nom) {
+        this.nom = nom;
 
-        if (nom.length() == 9){ this.nom = nom; }
-        else { System.out.println("DNI no vàlid."); }
     }
 
     /**
@@ -43,7 +42,8 @@ public class Client implements InClient {
      * @param dni el dni del client
      */
     public void setDni(String dni) {
-        this.dni = dni;
+        if (dni.length() == 9){ this.dni = dni; }
+        else { System.out.println("DNI no vàlid."); }
     }
 
     /**
