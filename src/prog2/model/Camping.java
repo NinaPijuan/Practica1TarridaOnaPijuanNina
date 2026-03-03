@@ -79,7 +79,7 @@ public class Camping implements InCamping{
      */
     @Override
     public int getNumReserves() {
-        return llistaReserves.getNumReserves(); // ACABAR
+        return llistaReserves.getNumReserves();
     }
 
     /**
