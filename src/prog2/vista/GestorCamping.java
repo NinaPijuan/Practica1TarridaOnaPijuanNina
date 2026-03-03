@@ -1,7 +1,11 @@
 
 package prog2.vista;
 
+import prog2.model.Allotjament;
 import prog2.model.Camping;
+import prog2.model.InAllotjament;
+
+import java.time.LocalDate;
 
 
 /**
@@ -21,16 +25,18 @@ public class GestorCamping {
         
         ferReserves(campingMar);
 
+        // Calculem el número total d'allotjaments i el número d'allotjaments operatius:
+        int nAllotjament = campingMar.getNumAllotjaments();
+        int allotjamentsOperatius = campingMar.calculAllotjamentsOperatius();
+        System.out.println("El número total d'allotjaments del Càmping és " + nAllotjament + " dels quals " +
+                        allotjamentsOperatius + " estan operatius");
 
-        // Mostrar el número total d'allotjaments del Càmping i el número d'allotjaments que estan operatius amb el següent missatge:
-        // >> El número total d'allotjaments del Càmping és X dels quals X allotjaments estan operatius.
-        //--------------------------------------------------------------------------------------------------
-        // Per completar
 
-        // Mostrar l'allotjament amb estada mínima de la temporada alta més curta amb el següent missatge:
-        // >> L'allotjament amb estada mínima de la temporada alta més curta és el següent:
-        //--------------------------------------------------------------------------------------------------
-        // Per completar
+        // Mostrar l'allotjament amb estada mínima de la temporada alta més curta
+        Allotjament allotjament = campingMar.getAllotjamentEstadaMesCurta(InAllotjament.Temp.ALTA);
+        System.out.println("L'allotjament amb estada mínima de la temporada alta més curta és el següent: "
+                + allotjament.toString());
+
        
     }
 
@@ -187,41 +193,39 @@ public class GestorCamping {
      * @param camping
      */
     private static void ferReserves(Camping camping){
-        
-        // Per completar:
-        
-        // 1. Afegeix una reserva pel client amb DNI "12345678X" de l'allotjament amb identificador "100P"
-        // amb la data d'entrada 20 de Febrer del 2026 i data de sortida 28 de febrer del 2026.
 
-        // Declarar les variables de tipus String idAllotjament i dni.
-        // Per completar
 
-        // Assigna els valors corresponents.
-        // Per completar
+        // Prova 1:
+        String dni1 = "12345678";
+        String idAllotjament1 = "100P";
+        LocalDate dataEntrada1 = LocalDate.of(2026, 2, 20);
+        LocalDate dataSortida1 = LocalDate.of(2026, 2, 28);
+        try{
+            camping.afegirReserva(idAllotjament1, dni1, dataEntrada1, dataSortida1);
+        }
+        catch (ExcepcioReserva e) { System.err.println(e.getMessage());}
 
-        // Crear una LocalDate per definir la data de la reserva.
-        // Per completar
+        // Prova 2:
+        String dni2 = "78659101A";
+        String idAllotjament2 = "100P";
+        LocalDate dataEntrada2 = LocalDate.of(2026, 2, 25);
+        LocalDate dataSortida2 = LocalDate.of(2026, 2, 28);
+        try{
+            camping.afegirReserva(idAllotjament2, dni2, dataEntrada2, dataSortida2);
+        }
+        catch (ExcepcioReserva e) { System.err.println(e.getMessage());}
 
-        // Intentar afegir la reserva amb la informació indicada i si no és possible mostrar el missatge d'error.
-        // Per completar
-        
-        // 2. Afegeix una reserva pel client amb DNI "78659101A" de l'allotjament amb identificador "100P"
-        // amb la data d'entrada 25 de Febrer del 2026 i data de sortida 28 de febrer del 2026.
 
-        // Assigna els nous valors a les variables
-        // Per completar
+        // Prova 3:
+        String dni3 = "789101A";
+        String idAllotjament3 = "300Z";
+        LocalDate dataEntrada3 = LocalDate.of(2026, 2, 25);
+        LocalDate dataSortida3 = LocalDate.of(2026, 2, 28);
+        try{
+            camping.afegirReserva(idAllotjament3, dni3, dataEntrada3, dataSortida3);
+        }
+        catch (ExcepcioReserva e) { System.err.println(e.getMessage());}
 
-        // Intentar afegir la reserva amb la informació indicada i si no és possible mostrar el missatge d'error.
-        // Per completar
-           
-        // 3. Afegeix una reserva pel client amb DNI "789101A" de l'allotjament amb identificador "300Z"
-        // amb la data d'entrada 25 de Febrer del 2026 i data de sortida 28 de febrer del 2026.
-
-        // Assigna els nous valors a les variables.    
-        // Per completar
-
-        // Intentar afegir la reserva amb la informació indicada i si no és possible mostrar el missatge d'error.
-        // Per completar
         
     }
     

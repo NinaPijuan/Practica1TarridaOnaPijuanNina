@@ -220,8 +220,20 @@ public class Camping implements InCamping{
      */
     @Override
     public int calculAllotjamentsOperatius() {
-        return 0;
+
+        int allotjamentsOperatius = 0;
+
+        for (int i = 0; i < llistaAllotjaments.size(); i++){
+
+            // Per accedir a un ArrayList es fa .get(i) i no [i]
+            if (llistaAllotjaments.get(i).correcteFuncionament()){
+                allotjamentsOperatius += 1;
+            }
+        }
+
+        return allotjamentsOperatius;
     }
+
 
     /**
      * Cerca i retorna l'allotjament amb estada mínima de la temporada alta més curta.
