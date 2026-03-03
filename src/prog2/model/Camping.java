@@ -206,6 +206,10 @@ public class Camping implements InCamping{
     @Override
     public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
         // CAL UTILITZAR BUSCARALLOTJAMENT() I BUSCAR CLIENT
+        Allotjament allotjament = buscarAllotjament(id_);
+        Client client = buscarClient(dni_);
+
+        llistaReserves.afegirReserva(allotjament, client, dataEntrada, dataSortida);
 
     }
 
@@ -227,44 +231,55 @@ public class Camping implements InCamping{
      */
     @Override
     public Allotjament getAllotjamentEstadaMesCurta(InAllotjament.Temp temp) {
-        return null;
+        long min = Integer.MAX_VALUE, estadaMinima;
+        Allotjament allotjamentMin = null;
+        Iterator<Allotjament> itrAllotjament = llistaAllotjaments.iterator();
+        while (itrAllotjament.hasNext()) {
+            Allotjament a = itrAllotjament.next();
+            estadaMinima = a.getEstadaMinima(temp);
+            if (estadaMinima < min) {
+                min = estadaMinima;
+                allotjamentMin = a;
+            }
+        }
+        if(allotjamentMin == null)
+            throw new RuntimeException();
+        else return allotjamentMin;
     }
 
     // Retorna l'allotjament corresponent a un identificador
     // S'ha d'utilitzar a afegirReserva() de Camping
-    public Allotjament buscarAllotjament(int id) {
+    public Allotjament buscarAllotjament(String id) throws ExcepcioReserva {
         Iterator<Allotjament> itrAllotjament = llistaAllotjaments.iterator();
         while (itrAllotjament.hasNext()) {
             Allotjament a = itrAllotjament.next();
             if (a.getId().equals(id))
                 return a;
         }
-        return null; // EXCEPCIO??
+        throw new ExcepcioReserva("L'allotjament amb id " + id + " no existeix");
     }
 
     // Retorna el client corresponent a un DNI
     // S'ha d'utilitzar a afegirReserva() de Camping
-    public Client buscarClient(int dni) {
+    public Client buscarClient(String dni) throws ExcepcioReserva {
         Iterator<Client> itrClients = llistaClients.iterator();
         while (itrClients.hasNext()) {
             Client c = itrClients.next();
             if (c.getDni().equals(dni))
                 return c;
         }
-        return null; // RETORNA EXCEPCIÓ?
+        throw new ExcepcioReserva("El client amb DNI " + dni + " no existeix");
     }
 
     // Retorna la temporada corresponent a la data
-    // Analitzar la data de la temporada
-    // Temporada alta: 21 de març a 20 de setembre
-    // Temporada baixa: 21 de setembre a 20 de març
-    // Utilitzar getDayOfMonth i getMonthValue de la classe LocalDate
     public static InAllotjament.Temp getTemporada(LocalDate data) {
         int dia = data.getDayOfMonth();
         int mes = data.getMonthValue();
         // Temporada alta:
-
-        return null;
+        if ((mes > 4 && mes < 9) || (mes == 3 && dia >= 21) || (mes == 9 && dia <= 20))
+            return InAllotjament.Temp.ALTA;
+        // Temporada baixa;
+        else return InAllotjament.Temp.BAIXA;
     }
 
 

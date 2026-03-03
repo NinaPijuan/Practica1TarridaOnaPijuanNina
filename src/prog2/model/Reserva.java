@@ -19,7 +19,13 @@ public class Reserva implements InReserva {
     // hem de crear un mètode a la classe Reserva on calculem l'estada i utilitzar el LocalDate?? Es fa a LlistaReserves
 
     // Constructor
-    public Reserva(Allotjament allotjament, Client client, LocalDate dataEntrada, LocalDate dataSortida) {
+    public Reserva(Allotjament allotjament, Client client, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
+        if (dataEntrada == null || dataSortida == null)
+            throw new ExcepcioReserva("Les dates de la reserva no poden ser null");
+
+        if (!dataSortida.isAfter(dataEntrada))
+            throw new ExcepcioReserva("La data de sortida no pot ser abans de la data d'entrada");
+
         this.allotjament = allotjament;
         this.client = client;
         this.dataEntrada = dataEntrada;
