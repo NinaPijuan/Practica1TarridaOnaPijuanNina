@@ -1,10 +1,6 @@
 package prog2.model;
 
-// TOTES LES CLASSES HAN DE TENIR CONSTRUCTOR, I GETTERS I SETTERS PER ACCEDIR I MODIFICAR ELS ATRIBUTS
-// CADA SUBCLASSE (PARCELA, BUNGALOW, BUNGALOW_PREMIUM, GLAMPING I MOBIL-HOME) HAN D'IMPLEMENTAR EL MÈTODE
-// correcteFuncionament
-// ELS CONSTRUCTORS HAN DE REBRE ELS PARÀMETRES EN EL MATEIX ORDRE QUE A InCamping
-// PENSAR MÈTODE toString (??)
+
 
 public abstract class Allotjament implements InAllotjament {
     private String nom;
@@ -60,14 +56,10 @@ public abstract class Allotjament implements InAllotjament {
         switch (temp){
             case ALTA: return this.tempsMinAlta;
             case BAIXA: return this.tempsMinBaixa;
-            default: return 0; // Per si de cas?
+            default: return 0; // Per si de cas
         }
     }
 
-    /**
-     * Enumeració que representa les diferents temporades possibles.
-     */
-    // public enum Temp { BAIXA, ALTA }
 
 
     /**

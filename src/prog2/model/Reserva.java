@@ -11,14 +11,16 @@ public class Reserva implements InReserva {
     private Client client;
     private LocalDate dataEntrada;
     private LocalDate dataSortida;
-    // LA RESERVA NOMÉS ES POT FER SI L'ESTADA ÉS MAJOR O IGUAL QUE L'ESTADA MÍNIMA PREDETERMINADA SEGONS EL TIPUS
-    // D'ALLOTJAMENT I SEGONS LA TEMPORADA.
 
-    // LA CLASSE LOCAL DATE??
-    // hem de crear una classe que es digui així i posar els seus mètodes allà?? No, és una llibreria k es pot utilitzar
-    // hem de crear un mètode a la classe Reserva on calculem l'estada i utilitzar el LocalDate?? Es fa a LlistaReserves
 
-    // Constructor
+    /**
+     * Constructor amb paràmetres
+     * @param allotjament
+     * @param client
+     * @param dataEntrada
+     * @param dataSortida
+     * @throws ExcepcioReserva
+     */
     public Reserva(Allotjament allotjament, Client client, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
         if (dataEntrada == null || dataSortida == null)
             throw new ExcepcioReserva("Les dates de la reserva no poden ser null");
@@ -48,7 +50,6 @@ public class Reserva implements InReserva {
 
 
 
-    // akests no tenen gens de sentit (els poso igualment i després ja decidim)
     /**
      * Setters d'allotjament reservat, client que reserva, i dates d'entrada i sortida
      */

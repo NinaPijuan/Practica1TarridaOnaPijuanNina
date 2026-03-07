@@ -205,7 +205,7 @@ public class Camping implements InCamping{
      */
     @Override
     public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
-        // CAL UTILITZAR BUSCARALLOTJAMENT() I BUSCAR CLIENT
+
         Allotjament allotjament = buscarAllotjament(id_);
         Client client = buscarClient(dni_);
 
@@ -245,25 +245,39 @@ public class Camping implements InCamping{
     public Allotjament getAllotjamentEstadaMesCurta(InAllotjament.Temp temp) {
         long min = Integer.MAX_VALUE, estadaMinima;
         Allotjament allotjamentMin = null;
+
+        // Creem un iterador de la llistaAllotjaments
         Iterator<Allotjament> itrAllotjament = llistaAllotjaments.iterator();
         while (itrAllotjament.hasNext()) {
+
+            // a serà l'Allotjament on apunta itrAllotjament i l'iterador es mou una posició
             Allotjament a = itrAllotjament.next();
+
             estadaMinima = a.getEstadaMinima(temp);
             if (estadaMinima < min) {
                 min = estadaMinima;
                 allotjamentMin = a;
             }
         }
+
         if(allotjamentMin == null)
             throw new RuntimeException();
         else return allotjamentMin;
     }
 
-    // Retorna l'allotjament corresponent a un identificador
-    // S'ha d'utilitzar a afegirReserva() de Camping
+    /**
+     * Busca l'allotjament en la llista d'allotjaments segons l'id donat
+     * @param id
+     * @return Allotjament
+     * @throws ExcepcioReserva
+     */
     public Allotjament buscarAllotjament(String id) throws ExcepcioReserva {
+
+        // Creem un iterador de la llistaAllotjaments
         Iterator<Allotjament> itrAllotjament = llistaAllotjaments.iterator();
         while (itrAllotjament.hasNext()) {
+
+            // a serà l'ALlotjament on apunta itrAllotjament i itrAllotjament es mou una posició
             Allotjament a = itrAllotjament.next();
             if (a.getId().equals(id))
                 return a;
@@ -271,11 +285,18 @@ public class Camping implements InCamping{
         throw new ExcepcioReserva("L'allotjament amb id " + id + " no existeix");
     }
 
-    // Retorna el client corresponent a un DNI
-    // S'ha d'utilitzar a afegirReserva() de Camping
+    /**
+     * Busca el client en la llista de clients donat el seu DNI
+     * @param dni
+     * @return Client
+     * @throws ExcepcioReserva
+     */
     public Client buscarClient(String dni) throws ExcepcioReserva {
+
+        // Creem un iterador de la llistaClients
         Iterator<Client> itrClients = llistaClients.iterator();
         while (itrClients.hasNext()) {
+            // c serà el Client on apunta itrClients i itrClients es mou una posició
             Client c = itrClients.next();
             if (c.getDni().equals(dni))
                 return c;
@@ -283,10 +304,16 @@ public class Camping implements InCamping{
         throw new ExcepcioReserva("El client amb DNI " + dni + " no existeix");
     }
 
-    // Retorna la temporada corresponent a la data
+    /**
+     * Retorna la temporada segons la data donada
+     * @param data
+     * @return enum
+     */
     public static InAllotjament.Temp getTemporada(LocalDate data) {
+
         int dia = data.getDayOfMonth();
         int mes = data.getMonthValue();
+
         // Temporada alta:
         if ((mes > 4 && mes < 9) || (mes == 3 && dia >= 21) || (mes == 9 && dia <= 20))
             return InAllotjament.Temp.ALTA;

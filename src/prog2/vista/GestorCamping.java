@@ -196,6 +196,7 @@ public class GestorCamping {
 
 
         // Prova 1:
+        System.out.println("Prova 1:");
         String dni1 = "12345678";
         String idAllotjament1 = "100P";
         LocalDate dataEntrada1 = LocalDate.of(2026, 2, 20);
@@ -206,6 +207,7 @@ public class GestorCamping {
         catch (ExcepcioReserva e) { System.err.println(e.getMessage());}
 
         // Prova 2:
+        System.out.println("Prova 2:");
         String dni2 = "78659101A";
         String idAllotjament2 = "100P";
         LocalDate dataEntrada2 = LocalDate.of(2026, 2, 25);
@@ -217,6 +219,7 @@ public class GestorCamping {
 
 
         // Prova 3:
+        System.out.println("Prova 3:");
         String dni3 = "789101A";
         String idAllotjament3 = "300Z";
         LocalDate dataEntrada3 = LocalDate.of(2026, 2, 25);
