@@ -61,7 +61,8 @@ public class LlistaReserves implements InLlistaReserves {
      * @param client
      * @param dataEntrada
      * @param dataSortida
-     * @throws ExcepcioReserva
+     * @throws ExcepcioReserva si l'allotjament no està disponible en les dates desitjades
+     *                         o si no es compleix l'estada mínima.
      */
     public void afegirReserva(Allotjament allotjament, Client client, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
 
@@ -97,7 +98,6 @@ public class LlistaReserves implements InLlistaReserves {
     * @return boolean
     */
     public boolean allotjamentDisponible(Allotjament allotjament, LocalDate dataEntrada, LocalDate dataSortida) {
-
         boolean lliure = true;
         String id = allotjament.getId();
 

@@ -4,8 +4,6 @@ public class Client implements InClient {
     private String nom;
     private String dni; // De 9 caràcters
 
-    // IMPLEMENTAR MÈTODE toString (donar el format desitjant a les impressions per pantalla)
-
     // Constructor
     public Client(String nom, String dni) {
         this.nom = nom;
@@ -16,26 +14,19 @@ public class Client implements InClient {
      * Getter de nom
      * @return nom
      */
-    public String getNom() {
-        return nom;
-    }
+    public String getNom() { return nom; }
 
     /**
      * Getter de dni
      * @return dni
      */
-    public String getDni() {
-        return dni;
-    }
+    public String getDni() { return dni; }
 
     /**
      * Setter de nom
      * @param nom el nom del client
      */
-    public void setNom(String nom) {
-        this.nom = nom;
-
-    }
+    public void setNom(String nom) { this.nom = nom; }
 
     /**
      * Getter de dni

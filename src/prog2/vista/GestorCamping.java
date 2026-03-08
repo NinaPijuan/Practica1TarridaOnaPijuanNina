@@ -10,7 +10,6 @@ import java.time.LocalDate;
 
 /**
  * Classe per gestionar els allotjaments del Càmping del Mar.
- * @author lauraigual
  */
 public class GestorCamping {
 
@@ -203,6 +202,8 @@ public class GestorCamping {
         LocalDate dataSortida1 = LocalDate.of(2026, 2, 28);
         try{
             camping.afegirReserva(idAllotjament1, dni1, dataEntrada1, dataSortida1);
+            // Comprovació
+            System.out.println("Reserva creada correctament per allotjament " + idAllotjament1);
         }
         catch (ExcepcioReserva e) { System.err.println(e.getMessage());}
 
@@ -214,6 +215,8 @@ public class GestorCamping {
         LocalDate dataSortida2 = LocalDate.of(2026, 2, 28);
         try{
             camping.afegirReserva(idAllotjament2, dni2, dataEntrada2, dataSortida2);
+            // Comprovació
+            System.out.println("Reserva creada correctament per allotjament " + idAllotjament2);
         }
         catch (ExcepcioReserva e) { System.err.println(e.getMessage());}
 
@@ -226,6 +229,8 @@ public class GestorCamping {
         LocalDate dataSortida3 = LocalDate.of(2026, 2, 28);
         try{
             camping.afegirReserva(idAllotjament3, dni3, dataEntrada3, dataSortida3);
+            // Comprovació
+            System.out.println("Reserva creada correctament per allotjament " + idAllotjament3);
         }
         catch (ExcepcioReserva e) { System.err.println(e.getMessage());}
 

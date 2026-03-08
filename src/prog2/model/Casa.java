@@ -52,16 +52,10 @@ abstract class Casa extends Allotjament {
     public int getCapacitat() { return capacitat; }
 
     /**
-    *
+    * Guarda la capacitat de persones
     * @param capacitat
     */
     public void setCapacitat(int capacitat) { this.capacitat = capacitat; }
-
-    @Override
-    public long getEstadaMinima(InAllotjament.Temp temp) {
-        return 0;
-    }
-
 
     public abstract boolean correcteFuncionament();
 

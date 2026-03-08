@@ -3,7 +3,7 @@ package prog2.model;
 public class Parcela extends Allotjament {
 
     private float mida; // en m2
-    private boolean connexioElectrica; //true -> en té
+    private boolean connexioElectrica;
 
     /**
      * Constructor amb paràmetres
@@ -35,6 +35,7 @@ public class Parcela extends Allotjament {
      * @return connexioElectrica
      */
     public boolean getConnexioElectrica(){ return connexioElectrica; }
+    // El mateix que isConnexioElectrica()
 
     /**
      * Guarda l'electricitat
@@ -58,11 +59,14 @@ public class Parcela extends Allotjament {
      */
     @Override
     public String toString(){
-        return super.toString(); //+ ". Parcel·la{mida= " + mida
-               // + ", connexió elèctrica= " + connexioElectrica + ".";
+        return super.toString();
     }
 
-    public boolean isConnexioElectrica() {return connexioElectrica;} // REPETIT?
+    /**
+     * Obté l'electricitat
+     * @return connexioElectrica
+     */
+    public boolean isConnexioElectrica() { return connexioElectrica;}
 }
 
 

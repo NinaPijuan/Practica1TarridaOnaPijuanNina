@@ -2,7 +2,7 @@ package prog2.model;
 
 public class Bungalow extends Casa {
     private int parquing; // 1 o 2
-    private boolean terrassa; // true -> en té
+    private boolean terrassa;
     private boolean tele;
     private boolean aire;
 
@@ -27,7 +27,7 @@ public class Bungalow extends Casa {
     }
 
     /**
-     * Getters de places de parking, terrassa, televisió i sistema d'aire fred
+     * Getters de places de parquing, terrassa, televisió i sistema d'aire fred
      */
     public int getPark(){ return parquing; }
     public boolean getTerrassa(){ return terrassa; }
@@ -35,7 +35,7 @@ public class Bungalow extends Casa {
     public boolean getAire(){ return aire; }
 
     /**
-     * Setters de places de parqing, terrassa, televisió i sistema d'aire fred
+     * Setters de places de parquing, terrassa, televisió i sistema d'aire fred
      */
     public void setParquing(int park){ this.parquing = parquing; }
     public void setTerrassa(boolean terrassa){ this.terrassa = terrassa; }

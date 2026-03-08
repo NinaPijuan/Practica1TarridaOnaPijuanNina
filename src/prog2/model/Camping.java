@@ -11,11 +11,6 @@ public class Camping implements InCamping{
     private ArrayList<Allotjament> llistaAllotjaments;
     private ArrayList<Client> llistaClients;
     private LlistaReserves llistaReserves;
-    // Amb els ArrayList cal utilitzar ITERATORS, mirar document de suport
-
-
-    // Tots els mètodes afegir(Allotjament) creen un objecte del tipus d'allotjament amb els paràmetres i l'afegeix a
-    // la llista.
 
     public Camping(String nom) {
         this.nom = nom;
@@ -26,18 +21,14 @@ public class Camping implements InCamping{
 
     /**
      * Retorna el nom del càmping.
-     *
      * @return el nom del càmping.
      */
     @Override
-    public String getNom() {
-        return nom;
-    }
+    public String getNom() { return nom; }
 
     /**
      * Retorna la llista de reserves del camping.
-     *
-     * @return
+     * @return llistaReserves
      */
     @Override
     public LlistaReserves getLlistaReserves() {
@@ -46,6 +37,7 @@ public class Camping implements InCamping{
 
     /**
      * Retorna la llista d'allotjaments del camping.
+     * @return llistaAllotjaments
      */
     @Override
     public ArrayList<Allotjament> getLlistaAllotjaments() {
@@ -54,8 +46,7 @@ public class Camping implements InCamping{
 
     /**
      * Retorna la llista de clients del camping.
-     *
-     * @return
+     * @return llistaClients
      */
     @Override
     public ArrayList<Client> getLlistaClients() {
@@ -64,7 +55,6 @@ public class Camping implements InCamping{
 
     /**
      * Retorna el número total d'allotjaments del càmping.
-     *
      * @return el número total d'allotjaments.
      */
     @Override
@@ -74,17 +64,13 @@ public class Camping implements InCamping{
 
     /**
      * Retorna el número total de reserves del càmping.
-     *
      * @return el número total de reserves.
      */
     @Override
-    public int getNumReserves() {
-        return llistaReserves.getNumReserves();
-    }
+    public int getNumReserves() { return llistaReserves.getNumReserves(); }
 
     /**
      * Retorna el número total de clients del càmping.
-     *
      * @return el número total de clients.
      */
     @Override
@@ -94,7 +80,6 @@ public class Camping implements InCamping{
 
     /**
      * Crea un nou objecte de tipus Client i l'afegeix a la llista de clients.
-     *
      * @param nom_ el nom del nou client.
      * @param dni_ el DNI del nou client.
      */
@@ -106,10 +91,9 @@ public class Camping implements InCamping{
 
     /**
      * Afegeix una nova parcel·la a la llista d'allotjaments.
-     *
-     * @param nom_              el nom de la parcela.
-     * @param idAllotjament_    l'identificador únic de l'allotjament.
-     * @param metres            la mida de la parcela.
+     * @param nom_ el nom de la parcela.
+     * @param idAllotjament_ l'identificador únic de l'allotjament.
+     * @param metres la mida de la parcela.
      * @param connexioElectrica true si disposa de connexió elèctrica, false altrament.
      */
     @Override
@@ -120,16 +104,15 @@ public class Camping implements InCamping{
 
     /**
      * Afegeix un nou bungalow a la llista d'allotjaments.
-     *
-     * @param nom_           el nom del bungalow.
+     * @param nom_ el nom del bungalow.
      * @param idAllotjament_ l'identificador únic de l'allotjament.
-     * @param mida           la mida del bungalow.
-     * @param habitacions    el nombre d'habitacions del bungalow.
+     * @param mida la mida del bungalow.
+     * @param habitacions el nombre d'habitacions del bungalow.
      * @param placesPersones el nombre màxim de places per a persones.
      * @param placesParquing el nombre de places de pàrquing disponibles.
-     * @param terrassa       true si disposa de terrassa, false altrament.
-     * @param tv             true si disposa de televisió, false altrament.
-     * @param aireFred       true si disposa d'aire condicionat, false altrament.
+     * @param terrassa true si disposa de terrassa, false altrament.
+     * @param tv true si disposa de televisió, false altrament.
+     * @param aireFred true si disposa d'aire condicionat, false altrament.
      */
     @Override
     public void afegirBungalow(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred) {
@@ -139,19 +122,9 @@ public class Camping implements InCamping{
 
     /**
      * Afegeix un bungalow premium a la llista d'allotjaments.
-     *
-     * @param nom_
-     * @param idAllotjament_
-     * @param mida
-     * @param habitacions
-     * @param placesPersones
-     * @param placesParquing
-     * @param terrassa
-     * @param tv
-     * @param aireFred
-     * @param serveisExtra   true si ofereix serveis extra.
-     * @param codiWifi       el codi de la xarxa Wi-Fi.
-     *                       (Altres paràmetres igual que `afegirBungalow`)
+     * @param serveisExtra true si ofereix serveis extra.
+     * @param codiWifi el codi de la xarxa Wi-Fi.
+     * (Altres paràmetres igual que `afegirBungalow`)
      */
     @Override
     public void afegirBungalowPremium(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi) {
@@ -161,51 +134,37 @@ public class Camping implements InCamping{
 
     /**
      * Afegeix una casa glamping a la llista d'allotjaments.
-     *
-     * @param nom_
-     * @param idAllotjament_
-     * @param mida
-     * @param habitacions
-     * @param placesPersones
-     * @param material       el material del que està fet.
-     * @param casaMascota    true si accepta mascotes.
-     *                       (Altres paràmetres igual que `afegirBungalow`)
+     * @param material el material del que està fet.
+     * @param casaMascota true si accepta mascotes.
+     * (Altres paràmetres igual que `afegirBungalow`)
      */
     @Override
     public void afegirGlamping(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, String material, boolean casaMascota) {
-        Glamping g = new Glamping(nom, idAllotjament_, mida, habitacions, placesPersones, material, casaMascota);
+        Glamping g = new Glamping(nom_, idAllotjament_, mida, habitacions, placesPersones, material, casaMascota);
         llistaAllotjaments.add(g);
     }
 
     /**
-     * Afegeix una mobil-home a la llista d'allotjaments.
-     *
-     * @param nom_
-     * @param idAllotjament_
-     * @param mida
-     * @param habitacions
-     * @param placesPersones
+     *  Afegeix una mobil-home a la llista d'allotjaments.
      * @param terrassaBarbacoa true si disposa de terrassa amb barbacoa.
-     *                         (Altres paràmetres igual que `afegirBungalow`)
+     * (Altres paràmetres igual que `afegirBungalow`)
      */
     @Override
     public void afegirMobilHome(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, boolean terrassaBarbacoa) {
-        MobilHome mh = new MobilHome(nom, idAllotjament_, mida, habitacions, placesPersones, terrassaBarbacoa);
+        MobilHome mh = new MobilHome(nom_, idAllotjament_, mida, habitacions, placesPersones, terrassaBarbacoa);
         llistaAllotjaments.add(mh);
     }
 
     /**
      * Afegeix una nova reserva al càmping. Per fer-ho fa el següent: cerca el soci que vol fer la reserva i el servei que es vol reservar amb la informació necessària rebuda com a paràmetres i invoca al mètode afegirReserva de la classe LlistaReserves que crearà la reserva, si es pot, i la afegirà a la llista de reserves.
-     *
-     * @param id_         l'identificador de l'allotjament.
-     * @param dni_        el DNI del client que fa la reserva.
+     * @param id_ l'identificador de l'allotjament.
+     * @param dni_ el DNI del client que fa la reserva.
      * @param dataEntrada la data d'entrada.
      * @param dataSortida la data de sortida.
      * @throws ExcepcioReserva si no es pot realitzar la reserva.
      */
     @Override
     public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
-
         Allotjament allotjament = buscarAllotjament(id_);
         Client client = buscarClient(dni_);
 
@@ -215,12 +174,10 @@ public class Camping implements InCamping{
 
     /**
      * Recorre la llista de serveis comprovant el correcte funcionament de cadascun d'ells per contar el número de serveis que estan operatius.
-     *
      * @return el nombre de serveis operatius.
      */
     @Override
     public int calculAllotjamentsOperatius() {
-
         int allotjamentsOperatius = 0;
 
         for (int i = 0; i < llistaAllotjaments.size(); i++){
@@ -237,8 +194,6 @@ public class Camping implements InCamping{
 
     /**
      * Cerca i retorna l'allotjament amb estada mínima de la temporada alta més curta.
-     *
-     * @param temp
      * @return l'allotjament amb estada mínima de la temporada baixa més curta.
      */
     @Override
@@ -267,9 +222,9 @@ public class Camping implements InCamping{
 
     /**
      * Busca l'allotjament en la llista d'allotjaments segons l'id donat
-     * @param id
+     * @param id id de l'allotjament
      * @return Allotjament
-     * @throws ExcepcioReserva
+     * @throws ExcepcioReserva si no existeix l'allotjament
      */
     public Allotjament buscarAllotjament(String id) throws ExcepcioReserva {
 
@@ -287,9 +242,9 @@ public class Camping implements InCamping{
 
     /**
      * Busca el client en la llista de clients donat el seu DNI
-     * @param dni
+     * @param dni dni del client
      * @return Client
-     * @throws ExcepcioReserva
+     * @throws ExcepcioReserva si no existeix el client
      */
     public Client buscarClient(String dni) throws ExcepcioReserva {
 
@@ -306,8 +261,8 @@ public class Camping implements InCamping{
 
     /**
      * Retorna la temporada segons la data donada
-     * @param data
-     * @return enum
+     * @param data data donada
+     * @return ALTA o BAIXA
      */
     public static InAllotjament.Temp getTemporada(LocalDate data) {
 
@@ -315,7 +270,7 @@ public class Camping implements InCamping{
         int mes = data.getMonthValue();
 
         // Temporada alta:
-        if ((mes > 4 && mes < 9) || (mes == 3 && dia >= 21) || (mes == 9 && dia <= 20))
+        if ((mes > 3 && mes < 9) || (mes == 3 && dia >= 21) || (mes == 9 && dia <= 20))
             return InAllotjament.Temp.ALTA;
         // Temporada baixa;
         else return InAllotjament.Temp.BAIXA;

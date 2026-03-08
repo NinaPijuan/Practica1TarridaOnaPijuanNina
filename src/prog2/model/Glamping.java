@@ -29,10 +29,12 @@ public class Glamping extends Casa {
     /**
      * Setters de tipus de material i casa de mascotes
      */
-
-    // EL SET DE MATERIAL SÍ K HAURIA DE TENIR CONDICIONS (només pot ser fusta o tela)
-    public void setMaterial(String material){ this.material = material; }
-    public void setCasaMas(boolean casaMas){ this.casaMascota = casaMas; }
+    public void setMaterial(String material) {
+        if (material.equalsIgnoreCase("fusta") || material.equalsIgnoreCase("tela"))
+            this.material = material;
+        else System.out.println("Material incorrecte");
+    }
+    public void setCasaMascota(boolean casaMascota){ this.casaMascota = casaMascota; }
 
 
     /**
@@ -41,7 +43,7 @@ public class Glamping extends Casa {
      */
     @Override
     public String toString(){
-        return super.toString() + " Glamping{material= " + material + ", casa per mascotes= "
+        return super.toString() + " Glamping{material=" + material + ", casa per mascotes= "
                 + casaMascota + " .";
     }
     /**
@@ -49,9 +51,7 @@ public class Glamping extends Casa {
      * @return true si en té, false si no
      */
     @Override
-    public boolean correcteFuncionament(){
-        return casaMascota;
-    }
+    public boolean correcteFuncionament(){ return casaMascota; }
 
 
 }
